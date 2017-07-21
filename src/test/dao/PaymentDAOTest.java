@@ -1,4 +1,7 @@
+import org.junit.Test;
+
 import dao.PaymentDAO;
+import dataobjects.Transaction;
 
 public class PaymentDAOTest {
 	@Test
