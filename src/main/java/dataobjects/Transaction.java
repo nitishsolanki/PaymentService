@@ -3,22 +3,19 @@ package dataobjects;
 import java.math.BigDecimal;
 import java.util.Date;
 
-import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiModel;
 
 @ApiModel(value = "Transaction", description = "Transaction Data with account number, owner date and confirmation number")
 public class Transaction {
 	String accountNumber;
 	BigDecimal transactionAmount;
-	String acctOwnerName;
 	String confirmationNumber;
 	Date transactionDate;
 
 	@Override
 	public String toString() {
 		return "Transaction [accountNumber=" + accountNumber + ", transactionAmount=" + transactionAmount
-				+ ", acctOwnerName=" + acctOwnerName + ", confirmationNumber=" + confirmationNumber
-				+ ", transactionDate=" + transactionDate + "]";
+				+ ", confirmationNumber=" + confirmationNumber + ", transactionDate=" + transactionDate + "]";
 	}
 
 	public Transaction(String accountNumber, BigDecimal transactionAmount, String acctOwnerName,
@@ -26,7 +23,6 @@ public class Transaction {
 		super();
 		this.accountNumber = accountNumber;
 		this.transactionAmount = transactionAmount;
-		this.acctOwnerName = acctOwnerName;
 		this.confirmationNumber = confirmationNumber;
 		this.transactionDate = transactionDate;
 	}
@@ -45,14 +41,6 @@ public class Transaction {
 
 	public void setTransactionAmount(BigDecimal transactionAmount) {
 		this.transactionAmount = transactionAmount;
-	}
-
-	public String getAcctOwnerName() {
-		return acctOwnerName;
-	}
-
-	public void setAcctOwnerName(String acctOwnerName) {
-		this.acctOwnerName = acctOwnerName;
 	}
 
 	public String getConfirmationNumber() {
