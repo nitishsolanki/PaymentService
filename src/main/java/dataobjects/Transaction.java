@@ -1,29 +1,34 @@
 package dataobjects;
 
 import java.math.BigDecimal;
+import java.util.Comparator;
 import java.util.Date;
 
 import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(value = "Transaction", description = "Transaction Data with account number, owner date and confirmation number")
-public class Transaction {
+@ApiModel(value = "Transaction", description = "Transaction description data")
+public class Transaction implements Comparator<Transaction> {
+	@ApiModelProperty(value = "accountNumber", dataType = "String", example = "5639265293", position = 1)
 	String accountNumber;
+	@ApiModelProperty(value = "Transaction Amount", dataType = "BigDecimal", example = "10.55", position = 2)
 	BigDecimal transactionAmount;
-	String confirmationNumber;
+	@ApiModelProperty(value = "Payment confirmation number", dataType = "String", position = 3)
+	String paymentID;
+	@ApiModelProperty(value = "Date of Transaction", dataType = "java.util.Date", position = 4)
 	Date transactionDate;
 
 	@Override
 	public String toString() {
 		return "Transaction [accountNumber=" + accountNumber + ", transactionAmount=" + transactionAmount
-				+ ", confirmationNumber=" + confirmationNumber + ", transactionDate=" + transactionDate + "]";
+				+ ", paymentID=" + paymentID + ", transactionDate=" + transactionDate + "]";
 	}
 
-	public Transaction(String accountNumber, BigDecimal transactionAmount, String acctOwnerName,
-			String confirmationNumber, Date transactionDate) {
+	public Transaction(String accountNumber, BigDecimal transactionAmount, String paymentID, Date transactionDate) {
 		super();
 		this.accountNumber = accountNumber;
 		this.transactionAmount = transactionAmount;
-		this.confirmationNumber = confirmationNumber;
+		this.paymentID = paymentID;
 		this.transactionDate = transactionDate;
 	}
 
@@ -35,6 +40,14 @@ public class Transaction {
 		this.accountNumber = accountNumber;
 	}
 
+	public String getPaymentID() {
+		return paymentID;
+	}
+
+	public void setPaymentID(String paymentID) {
+		this.paymentID = paymentID;
+	}
+
 	public BigDecimal getTransactionAmount() {
 		return transactionAmount;
 	}
@@ -43,19 +56,19 @@ public class Transaction {
 		this.transactionAmount = transactionAmount;
 	}
 
-	public String getConfirmationNumber() {
-		return confirmationNumber;
-	}
-
-	public void setConfirmationNumber(String confirmationNumber) {
-		this.confirmationNumber = confirmationNumber;
-	}
-
 	public Date getTransactionDate() {
 		return transactionDate;
 	}
 
 	public void setTransactionDate(Date transactionDate) {
 		this.transactionDate = transactionDate;
+	}
+
+	@Override
+	public int compare(Transaction o1, Transaction o2) {
+		if (o1.getPaymentID().equalsIgnoreCase(o1.getPaymentID()))
+			return 0;
+		else
+			return -1;
 	}
 }
