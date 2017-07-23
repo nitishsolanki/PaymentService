@@ -8,7 +8,7 @@
 
 // Apply the java-library plugin to add support for Java Library
 apply plugin: 'java'
-
+apply plugin: 'eclipse'
 // In this section you declare where to find the dependencies of your project
 repositories {
     maven
@@ -20,9 +20,5 @@ repositories {
 dependencies {
     compile 'javax.ws.rs:jsr311-api:1.1.1'
     compile 'io.swagger:swagger-annotations:1.5.9'
+    compile 'io.swagger:swagger-codegen:2.2.3'   
 }
-
-task wrapper(type: Wrapper) {
-    gradleVersion = '2.0'
-}
-
