@@ -7,18 +7,19 @@
  */
 
 // Apply the java-library plugin to add support for Java Library
-apply plugin: 'java-library'
-buildscript{
+apply plugin: 'java'
+
 // In this section you declare where to find the dependencies of your project
 repositories {
-    // Use jcenter for resolving your dependencies.
-    // You can declare any Maven/Ivy/file repository here.
-    jcenter()
+    maven
+    {
+    url 'http://repo1.maven.org/maven2/'
+    }
 }
-}
+
 dependencies {
     compile 'javax.ws.rs:jsr311-api:1.1.1'
-    testImplementation 'junit:junit:4.12'
+    compile 'io.swagger:swagger-annotations:1.5.9'
 }
 
 task wrapper(type: Wrapper) {
